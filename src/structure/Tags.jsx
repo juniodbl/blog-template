@@ -1,7 +1,8 @@
 import React from 'react';
+import api from '../api/Blog';
 
 export default () => {
-    const tags = ['New York', 'London', 'IKEA', 'NORWAY', 'DIY', 'Ideas', 'Baby', 'Family', 'News', 'Clothing', 'Shopping', 'Sports', 'Games'];
+    const tags = api.tags();
 
     return (
         <div className="w3-card w3-margin">
@@ -10,10 +11,9 @@ export default () => {
             </div>
             <div className="w3-container w3-white">
                 <p>
-                    <span className="w3-tag w3-black w3-margin-bottom">Travel</span>
                     {
                         tags.map(tag => (
-                            <span className="w3-tag w3-light-grey w3-small w3-margin-bottom">{tag}</span>
+                            <span className={"w3-tag " + (tag.selected ? "w3-black" : "w3-light-grey w3-small") + " w3-margin-bottom"}>{tag.name}</span>
                         ))
                     }
                 </p>

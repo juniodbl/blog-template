@@ -1,4 +1,5 @@
 import React from 'react';
+import api from '../api/Blog';
 
 export default () => (
     <div className="w3-card w3-margin">
@@ -6,26 +7,13 @@ export default () => (
             <h4>Popular Posts</h4>
         </div>
         <ul className="w3-ul w3-hoverable w3-white">
-            <li className="w3-padding-16">
-                <img src="https://www.w3schools.com/w3images/workshop.jpg" alt="workshop" className="w3-left w3-margin-right" style={{ width: '50px' }} />
-                <span className="w3-large">Lorem</span><br />
-                <span>Sed mattis nunc</span>
-            </li>
-            <li className="w3-padding-16">
-                <img src="https://www.w3schools.com/w3images/gondol.jpg" alt="gondol" className="w3-left w3-margin-right" style={{ width: '50px' }} />
-                <span className="w3-large">Ipsum</span><br />
-                <span>Praes tinci sed</span>
-            </li>
-            <li className="w3-padding-16">
-                <img src="https://www.w3schools.com/w3images/skies.jpg" alt="skies" className="w3-left w3-margin-right" style={{ width: '50px' }} />
-                <span className="w3-large">Dorum</span><br />
-                <span>Ultricies congue</span>
-            </li>
-            <li className="w3-padding-16 w3-hide-medium w3-hide-small">
-                <img src="https://www.w3schools.com/w3images/rock.jpg" alt="rock" className="w3-left w3-margin-right" style={{ width: '50px' }} />
-                <span className="w3-large">Mingsum</span><br />
-                <span>Lorem ipsum dipsum</span>
-            </li>
+            {api.popularPosts().map(pp => (
+                <li className="w3-padding-16">
+                    <img src={pp.image} alt="workshop" className="w3-left w3-margin-right" style={{ width: '50px' }} />
+                    <span className="w3-large">{pp.title}</span><br />
+                    <span>{pp.subTitle}</span>
+                </li>
+            ))}
         </ul>
     </div>
 );
