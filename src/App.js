@@ -1,9 +1,9 @@
 import React from 'react';
 import Footer from './structure/Footer';
 import Tags from './structure/Tags';
-import PopularPosts from './structure/PopularPosts';
+import PopularPosts from './structure/popularPosts/PopularPosts';
 import About from './structure/About';
-import Posts from './structure/Posts';
+import Posts from './structure/posts/Posts';
 import Header from './structure/Header';
 
 function App() {

@@ -1,14 +1,17 @@
 import React from 'react';
 import Post from './Post';
-import api from '../api/Blog'
+import { search } from './posts.actions';
+import { createComponentRedux } from '../../util/ComponentCreator';
 
-export default class Posts extends React.Component {
+class Posts extends React.Component {
+    componentDidMount() {
+        this.props.search();
+    }
+
     render() {
-        const posts = api.posts();
-
         return (
             <div className="w3-col l8 s12">
-                {posts.map(post => (
+                {this.props.posts.map(post => (
                     <React.Fragment>
                         <Post image={post.image}
                             imageAlt={post.imageAlt}
@@ -24,3 +27,5 @@ export default class Posts extends React.Component {
         );
     }
 }
+
+export default createComponentRedux(Posts, "posts", { search });
